@@ -16,36 +16,36 @@ lang: en
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone:
+timezone: Asia/Dhaka
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy                          # the main title
+title: Nayeem Islam                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Bug Bounty Hunter & CTF player   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  I am learning Web app security. I will share my findings here.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://nayeems3c.github.io'
 
 github:
-  username: github_username             # change to your github username
+  username: nayeems3c            # change to your github username
 
 twitter:
-  username: twitter_username            # change to your twitter username
+  username: nayeems3c            # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
+  name: Nayeem Islam
   email: example@doamin.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    - https://twitter.com/nayeems3c      # change to your twitter homepage
+    - https://github.com/nayeems3c       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://pbs.twimg.com/profile_images/1552982983610474496/12XWjgpv_400x400.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
