@@ -1,6 +1,6 @@
 ---
 title: How I hacked Dutch Government
-date: 2023-06-02 10:00:00 +600
+date: 2023-06-06 10:00:00 +600
 catagories: [Bug Bounty]
 tags: [file upload bypass,rce,bug bounty,dutch government] #Tag names should always be in lower case.
 ---
@@ -24,11 +24,11 @@ I found only one subdomain using `crt.sh` and it was an e-learning platform. Any
 
 ## File Upload Bypass
 
-I will call my target as `e-learning.example.nl`. I quickly created an account and navigated to my profile then tested for XSS, HTMLi, CSRF and got notihng. 
+I will call my target as `elearning.example.nl`. I quickly created an account and navigated to my profile then tested for XSS, HTMLi, CSRF and got notihng. 
 
 Later I started testing profile picture upload feature. I tried uploading a `my-image.txt` file & the upload was successful. At first I was very happy then I opened the image url and found out my `.txt` file has been renamed and converted to jpg. 😥 The URL looked like this.
 
-[url.png](https://postimg.cc/zHjHNyzN)
+[url](https://postimg.cc/zHjHNyzN)
 
 
 
