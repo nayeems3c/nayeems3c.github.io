@@ -17,19 +17,31 @@ I started my bug bounty journey back in September of 2021. I saw few people shar
 
 ## My Journey
 
-I tried finding bugs for almost 7 months and found nothing real. So, I took a long break then started again with this repository. I found a website related to Health and Medicine. I didn't knew much recon techniques except basic subdomain discovery using `crt.sh`. 
+I tried finding bugs for almost 7 months and found nothing real. So, I took a long break then started again with this [repository](https://gist.github.com/testerzs/cf3085ec0bad6b1d661887d4f44e3574). I found a website related to Health and Medicine. I didn't know much recon techniques except basic subdomain enumeration using `crt.sh`. 
 
-I found only one subdomain using `crt.sh` and it was an e-learning platform. Anyone can sign-up on e-learning portal. Right? So, I chose this as my target because more functionalities increases the possibility of finding more bugs. I also noticed the e-learning portal was using PHP Laravel framework then my instinct said I might find bug here.
+I found only one live subdomain using `crt.sh` and it was an e-learning platform. Anyone can sign-up on e-learning portal. Right? So, I chose this as my target because more functionalities increases the possibility of finding more bugs. I also noticed the e-learning portal was using PHP Laravel framework then my instinct said I might find bug here.
 
 
 ## File Upload Bypass
 
-I will call my target as `elearning.example.nl`. I quickly created an account and navigated to my profile then tested for XSS, HTMLi, CSRF and got notihng. 
+So my target was `elearning.zorgvannu.nl`. I quickly created an account and navigated to my profile then tested for XSS, HTMLi, CSRF and got notihng. 
 
-Later I started testing profile picture upload feature. I tried uploading a `my-image.txt` file & the upload was successful. At first I was very happy then I opened the image url and found out my `.txt` file has been renamed and converted to jpg. 😥 The URL looked like this.
+Later I started testing profile picture upload feature. I tried uploading a `my-image.txt` file & the upload was successful. 
 
-[url](https://postimg.cc/zHjHNyzN)
+At first I was very happy then I opened the image url and found out the error `There is an error with this image file` also my `.txt` file has been renamed and converted to `my-image-thumb.jpg`. 😥 The  The URL looked like this.
 
+![Cyber Grabs CTF 2022](https://i.postimg.cc/Gm6SpHq5/Untitled.png "Cyber Grabs CTF Junior Edition") 
+
+I tried IDOR on `/storage/2762` because this number was sequential. It didn't work. I took a break for an hour. Then started looking into it again.
+
+<br>
+This time I noticed the sub directory `conversion`. I asked myself what the hell is this directory doing here? Maybe they are converting my original file then saving it to `conversion` folder.
+
+<br>
+
+So I tried accessing my `text` file by replacing `/conversions/my-image-thumb.jpg` with ```https://elearning.zorgvannu.nl/storage/2762/my-image.txt``` and it worked.
+
+I uploaded a php shell
 
 
 
