@@ -23,7 +23,7 @@ timezone: Asia/Dhaka
 
 title: Nayeem Islam                          # the main title
 
-tagline: Bug Bounty Hunter & CTF player   # it will display as the sub-title
+tagline: WebApp security learner & CTF player   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   I am learning Web app security. I will share my findings here.
@@ -40,15 +40,15 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Nayeem Islam
-  email: example@doamin.com             # change to your email address
+  name: nayeems3c
+  email: nayeemsec@proton.me             # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/nayeems3c      # change to your twitter homepage
     - https://github.com/nayeems3c       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    #- https://www.linkedin.com/in/username
 
 google_site_verification:               # fill in to your verification string
 
