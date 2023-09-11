@@ -3,7 +3,7 @@ title: Unveiling RCE on Dutch Government Website
 date: 2023-08-31 10:00:00 +600
 catagories: [Bug Bounty]
 tags: [file upload bypass,rce,bug bounty,dutch government] #Tag names should always be in lower case.
-excerpt: How I bypassed File upload to achieve Remote Code Execution (RCE) vulnerability on a Dutch government website.
+image: https://i.postimg.cc/x88sHvSx/Fox-Rd-OAa-AAMDOJ0.jpg
 ---
 
 ## Introduction
@@ -16,7 +16,9 @@ This is my first write-up and I'll be sharing how I bypassed File upload to achi
 
 My bug bounty journey started in September 2021. That time, I saw a few researchers sharing a picture of a cool black T-shirt on Twitter. Since then, it's been my dream to get Dutch government swag.
 
-I began my journey by targeting low-hanging fruits, often receiving informative or non-applicable responses on platforms like HackerOne. I kept trying and finally found my first valid bug in April 2022. That valid bug worked like a motivation to test my luck with Dutch government websites.
+![Dutch Government swag](https://i.postimg.cc/x88sHvSx/Fox-Rd-OAa-AAMDOJ0.jpg "Dutch Responsible Disclosure")
+
+I began my journey by targeting low-hanging fruits, often receiving informative or non-applicable responses on platforms like HackerOne. I kept trying and finally found my first valid bug in April 2022 and it worked like a motivation to test my luck with Dutch government websites.
 
 ## My Journey
 
@@ -36,25 +38,25 @@ Then I started testing profile picture upload feature. I tried uploading a simpl
 
 `There is an error with this image file`
 
-You can see below my `txt` file has been renamed and converted to `jpg` as well. 😥 
+Have a close look at the URL structure. You can see below my `txt` file has been renamed and converted to `jpg` as well. 😥 
 
 ![Dutch Government bug bounty](https://i.postimg.cc/J0VMKYL7/url1.png "Dutch Responsible Disclosure")
 
-I tried IDOR on this endpoint `/storage/528` because this number was user identifier & sequential. It didn't work. I took a short break to recharge and then revisited the issue.
+I tried IDOR on this endpoint `/storage/528` because this number was user identifier & sequential. It didn't work. I took a short break to recharge myself then revisited the target.
 
-This time I paid close attention to the sub directory `conversion` in the URL. I asked myself what the hell is this directory doing here? They might be storing my original text file in the `/528/` directory then converting it to jpg and saving it to `conversion`.
+This time I paid close attention to the sub directory `conversions` in the URL. I asked myself what the hell is this directory doing here? They might be storing my original text file in the `/528/` directory then converting it to jpg and saving it to `conversions`.
 
 I attempted to access the uploaded `text` file directly from `/528/`, resulting in a URL like this
 
  ![Dutch Government swag](https://i.postimg.cc/s22cxyhV/url.png "Dutch Responsible Disclosure")
 
-My assumption was right. The `TXT` file executed! I documented my findings with a Proof of Concept (PoC) and submitted my initaal report.
+My assumption was right. The `TXT` file executed! I documented my findings with a Proof of Concept (PoC) and submitted my initial report.
 
 Meanwhile, I was exploring ways to further exploit the file upload feature and I came across this excellent [article](https://sm4rty.medium.com/hunting-for-bugs-in-file-upload-feature-c3b364fb01ba).
 
 ## Exploiting RCE
 
-Later, I learned about File Upload to RCE. Then uploaded this simple one liner php shell to see whether RCE is achievable.
+Later, I learned about how File Upload can be exploited to achieve RCE. Then I uploaded this simple one liner PHP shell to see whether it works.
 
 ```php
 <?php system($_GET['cmd']); ?>
@@ -67,15 +69,13 @@ Send additional report to prove the impact of this newfound vulnerability.
 
 ## End Story
 
-I was happy and hopeless at the same time. This discovery seemed too easy, raising the possibility of it being a duplicate. To my surprise, my report was triaged! NCSC-NL also advised me not to upload shell on their system! 😜
-
-![Dutch Government bug bounty](https://i.postimg.cc/MTCh2tGJ/Untitled-Copy.png "Dutch Responsible Disclosure"){: .left }
-
-This issue was resolved within a month and I was awarded the Dream Swag! It was my first critical finding on a real target as well as my first ever bug submission on the Dutch Government. I thought I was lucky but I was wrong. My swag got lost in the shipment. 😞
+I was happy and hopeless at the same time. This discovery seemed too easy, raising the possibility of it being a duplicate. To my surprise, my report was triaged! NCSC-NL also advised me not to upload shell on their system!
 
 Before this discovery, I had never completed a single Portswigger lab on File Upload or Command Execution, except for basic TryHackMe rooms.
 
-They say, "Enjoy the journey, not just the destination." How true that turned out to be. I learned a ton of lessons throughout this journey.<br>
+This issue was resolved within a month and I was awarded the dream Swag! It was my first critical finding on a real target as well as my first ever bug submission on the Dutch Government. I thought I was lucky but I was wrong. My swag got lost in the shipment. 😞
+
+They say, Enjoy the journey, not just the destination. How true that turned out to be. I learned a ton of lessons throughout this journey.
 
 ### Timeline 
 
@@ -85,7 +85,9 @@ They say, "Enjoy the journey, not just the destination." How true that turned ou
 
 - 20-06-2022 - Bug confirmed and triaged.
 
-- 18-07-2022 - Bug Resolved.<br><br>
+- 18-07-2022 - Bug Resolved.
+
+- 22–07–2022 - Swag shipped by NCSC-NL and lost in the shipment.<br><br>
 
 I'd like to extend my gratitude to all the members of the [Bug Bounty Community of Bangladesh](https://twitter.com/bbcbd_official) for their mentorship and the infosec community on [Twitter](https://twitter.com/hashtag/bugbounty) for sharing invaluable research and tips.
 
