@@ -14,7 +14,7 @@ I was hunting on a subsidiary of Achmea. Let’s call our target `example.com`. 
 
 I created an account and while logging into my profile, I noticed an interesting API call like the one below
 
-```text
+```plaintext
 GET /api/users/me HTTP/1.1
 Host: site.example.com
 ```
@@ -37,7 +37,7 @@ Now it’s time to test Insecure Direct Object Reference (IDOR) vulnerability on
 
 So, I replaced id no. 24 with 23 on the API request and it looked like below.
 
-```text
+```plaintext
 GET /api/users/23 HTTP/1.1
 Host: site.example.com
 ```

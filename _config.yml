@@ -16,7 +16,7 @@ timezone:
 
 title: Nayeem Islam # the main title
 
-tagline: Welcome to my infosec blog # it will display as the subtitle
+tagline: Bug Bounty Hunter| Penetration Tester | CTF Player # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   I will be sharing my bug bounty findings and CTF walkthroughs in this blog.
@@ -59,7 +59,7 @@ webmaster_verifications:
 # Web Analytics Settings
 analytics:
   google:
-    id: # fill in your Google Analytics ID
+    id: "G-P077VJ18DM" # fill in your Google Analytics ID
   goatcounter:
     id: # fill in your GoatCounter ID
   umami:

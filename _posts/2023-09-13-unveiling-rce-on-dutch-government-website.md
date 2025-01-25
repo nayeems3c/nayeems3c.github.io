@@ -84,7 +84,7 @@ How true that turned out to be. I learned a ton of lessons throughout this journ
 - 22–07–2022 - Swag shipped by NCSC-NL and lost in the shipment.
 
 
-## Credt
+## Credit
 I’d like to extend my gratitude to all the members of the Bug Bounty Community of Bangladesh for their mentorship and the infosec community on Twitter for sharing invaluable research and tips.
 
 Thank you for taking the time to read this lengthy blog.
