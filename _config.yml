@@ -16,7 +16,7 @@ timezone:
 
 title: Nayeem Islam # the main title
 
-tagline: Bug Bounty Hunter| Penetration Tester | CTF Player # it will display as the subtitle
+tagline: Bug Bounty Hunter & CTF Player # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   I will be sharing my bug bounty findings and CTF walkthroughs in this blog.
